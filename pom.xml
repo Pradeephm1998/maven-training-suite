@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+  <artifactId>maven-training-suite</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <name>maven-training-suite</name>
+  <description>Two-module demo: jar-demo (lifecycle+reports) and war-demo (Tomcat deploy) + JFrog deploy placeholders</description>
+
+  <modules>
+    <module>jar-demo</module>
+    <module>war-demo</module>
+  </modules>
+
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <junit.jupiter.version>5.10.2</junit.jupiter.version>
+    <jacoco.version>0.8.12</jacoco.version>
+    <surefire.version>3.2.5</surefire.version>
+
+    <!-- Tomcat 9 uses javax.* -->
+    <servlet.api.version>4.0.1</servlet.api.version>
+
+    <!-- JFrog / Artifactory placeholders -->
+    <jfrog.release.repo.url>https://YOUR_JFROG_DOMAIN/artifactory/libs-release-local</jfrog.release.repo.url>
+    <jfrog.snapshot.repo.url>https://YOUR_JFROG_DOMAIN/artifactory/libs-snapshot-local</jfrog.snapshot.repo.url>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>${junit.jupiter.version}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <distributionManagement>
+    <repository>
+      <id>jfrog-releases</id>
+      <url>${jfrog.release.repo.url}</url>
+    </repository>
+    <snapshotRepository>
+      <id>jfrog-snapshots</id>
+      <url>${jfrog.snapshot.repo.url}</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>

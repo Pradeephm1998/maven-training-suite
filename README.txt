@@ -1,4 +1,4 @@
-Maven Training Suite (Two Modules)
+  for the  test  Maven Training Suite (Two Modules)
 ================================
 
 This zip is a training project to demo:
